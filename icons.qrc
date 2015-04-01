@@ -1,0 +1,16 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>icons/a-beenden.png</file>
+    <file>icons/a-datenbank-laden.png</file>
+    <file>icons/a-datenbank-loeschen.png</file>
+    <file>icons/a-neue-datenbank.png</file>
+    <file>icons/b-buchung-editieren.png</file>
+    <file>icons/b-buchung-hinzufuegen.png</file>
+    <file>icons/b-buchung-loeschen.png</file>
+    <file>icons/b-kategorien-entfernen.png</file>
+    <file>icons/b-kategorien-verwalten.png</file>
+    <file>icons/d-hilfe.png</file>
+    <file>icons/d-info.png</file>
+    <file>icons/window-icon.png</file>
+</qresource>
+</RCC>

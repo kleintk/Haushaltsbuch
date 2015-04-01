@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>970</width>
+    <height>678</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Auswertung</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/window-icon.png</normaloff>:/icons/window-icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>30</y>
+     <width>671</width>
+     <height>621</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>2</number>
+   </property>
+   <widget class="QWidget" name="page">
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>251</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Einnahmen / Ausgaben Vergleich:</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>470</y>
+       <width>651</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="showGrid">
+      <bool>false</bool>
+     </property>
+     <property name="cornerButtonEnabled">
+      <bool>false</bool>
+     </property>
+     <row>
+      <property name="text">
+       <string>Einnahme</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Ausgabe</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Differenz</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Jan</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Feb</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Mrz</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Apr</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Mai</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Jun</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Jul</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Aug</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Sep</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Okt</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Nov</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Dez</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QFrame" name="frameEinsBalken">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>651</width>
+       <height>341</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>40</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Jahr:</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBox">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>40</y>
+       <width>61</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1900</number>
+     </property>
+     <property name="maximum">
+      <number>2099</number>
+     </property>
+     <property name="value">
+      <number>2014</number>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2">
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>251</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Einnahmenübersicht:</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>470</y>
+       <width>651</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="cornerButtonEnabled">
+      <bool>false</bool>
+     </property>
+     <column>
+      <property name="text">
+       <string>Farbe</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Einnahme</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Jan</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Feb</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Mrz</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Apr</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Mai</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Jun</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Jul</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Aug</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Sep</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Okt</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Nov</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Dez</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QFrame" name="frameZweiPie">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>651</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frameZweiVerlauf">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>280</y>
+       <width>651</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>10</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Jahr:</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBox_2">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>10</y>
+       <width>61</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1900</number>
+     </property>
+     <property name="maximum">
+      <number>2099</number>
+     </property>
+     <property name="value">
+      <number>2014</number>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_3">
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>251</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Ausgabenübersicht:</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frameDreiPie">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>651</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frameDreiVerlauf">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>280</y>
+       <width>651</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>470</y>
+       <width>651</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="cornerButtonEnabled">
+      <bool>false</bool>
+     </property>
+     <column>
+      <property name="text">
+       <string>Farbe</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Ausgabe</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Jan</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Feb</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Mrz</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Apr</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Mai</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Jun</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Jul</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Aug</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Sep</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Okt</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Nov</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Dez</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>10</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Jahr:</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBox_3">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>10</y>
+       <width>61</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1900</number>
+     </property>
+     <property name="maximum">
+      <number>2099</number>
+     </property>
+     <property name="value">
+      <number>2014</number>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>-10</y>
+     <width>271</width>
+     <height>701</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame#frame{
+
+	background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(199, 199, 199, 255), stop:1 rgba(255, 255, 255, 255));
+
+}
+
+QToolButton{
+background-color: transparent;
+border: none;
+
+}
+
+QToolButton:checked, QToolButton:pressed{
+background-color: rgb(193, 210, 238);
+border: 1px solid rgb(60, 127, 177);
+
+}
+
+QToolButton:hover{
+background-color: rgb(224, 232, 246);
+
+}
+
+QToolButton:checked:hover{
+background-color: rgb(193, 210, 238);
+border: 1px solid rgb(60, 127, 177);
+
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="pushButtonEA">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>100</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Einnahmen/Ausgaben</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonEUE">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>180</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Einnahmenübersicht</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonAUE">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>250</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ausgabenübersicht</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonSchliessen">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>620</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Fenster schließen</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
