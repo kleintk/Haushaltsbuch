@@ -30,8 +30,8 @@ import auswertungDialogGui
 # matplotlib Imports
 import matplotlib
 matplotlib.use('Qt4Agg')
-matplotlib.rcParams['backend.qt4']='PySide'
-#import pylab
+matplotlib.rcParams['backend.qt4'] = 'PySide'
+# import pylab
 from pylab import *
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
@@ -39,7 +39,7 @@ from matplotlib.figure import Figure
 import numpy as np
 
 
-# noinspection PyUnresolvedReferences
+# noinspection PyUnresolvedReferences,PyBroadException
 class Hauptfenster(QMainWindow, hauptfenster.Ui_hauptfensterObjekt):
     def __init__(self, parent=None):
         super(Hauptfenster, self).__init__(parent)
@@ -191,7 +191,8 @@ class Hauptfenster(QMainWindow, hauptfenster.Ui_hauptfensterObjekt):
 
     def sortierte_liste_aller_buchungen_erstellen(self):
         if not self.pruefen_ob_datenbank_existiert():
-            return
+            liste = []
+            return liste
         conn = sqlite3.connect("datenbank.db")
         c = conn.cursor()
         try:
@@ -222,13 +223,13 @@ class Hauptfenster(QMainWindow, hauptfenster.Ui_hauptfensterObjekt):
         self.treeWidget.clear()
         try:
             liste = self.sortierte_liste_aller_buchungen_erstellen()
-            #vorgaenger_datum = ""
+            # vorgaenger_datum = ""
             for row in liste:
                 # so kann man es nach tags gruppieren, oben und unten vorgaenger_datum entkommentieren
-                #if vorgaenger_datum == row[1]:
-                #tmp = QTreeWidgetItem(tmp)
-                #else:
-                #tmp = QTreeWidgetItem(self.treeWidget)
+                # if vorgaenger_datum == row[1]:
+                # tmp = QTreeWidgetItem(tmp)
+                # else:
+                # tmp = QTreeWidgetItem(self.treeWidget)
                 # obiges statt das hier:
                 tmp = QTreeWidgetItem(self.treeWidget)
 
@@ -244,8 +245,8 @@ class Hauptfenster(QMainWindow, hauptfenster.Ui_hauptfensterObjekt):
                 if row[6] == "Einnahme":
                     tmp.setBackground(1, QBrush(QColor(0, 255, 0, 127)))
                     tmp.setBackground(4, QBrush(QColor(0, 255, 0, 127)))
-                    #vorgaenger_datum = row[1]
-                    #self.statusbar.showMessage("Buchungsanzeige erfolgreich aktualisiert.", 3000)
+                    # vorgaenger_datum = row[1]
+                    # self.statusbar.showMessage("Buchungsanzeige erfolgreich aktualisiert.", 3000)
         except:
             pass
 
@@ -356,6 +357,7 @@ class Hauptfenster(QMainWindow, hauptfenster.Ui_hauptfensterObjekt):
             pass
 
 
+# noinspection PyBroadException,PyUnresolvedReferences
 class NeuerEintragDialog(QDialog, neuerEintragDialog.Ui_neuerEintragDialog):
     werte_aus_NeuerEintragDialog = Signal(str)
 
@@ -408,6 +410,7 @@ class NeuerEintragDialog(QDialog, neuerEintragDialog.Ui_neuerEintragDialog):
         self.werte_aus_NeuerEintragDialog.emit(daten)
 
 
+# noinspection PyBroadException,PyUnresolvedReferences
 class EintragEditierenDialog(QDialog, neuerEintragDialog.Ui_neuerEintragDialog):
     werte_aus_EintragEditierenDialog = Signal(str)
     hilfsvariable_index_des_init_values_kategorie = 0
@@ -476,7 +479,7 @@ class EintragEditierenDialog(QDialog, neuerEintragDialog.Ui_neuerEintragDialog):
         self.werte_aus_EintragEditierenDialog.emit(daten)
 
 
-# noinspection PyUnresolvedReferences
+# noinspection PyUnresolvedReferences,PyBroadException
 class KategorienDialog(QDialog, kategorienDialog.Ui_kategorienDialog):
     def __init__(self, parent=None):
         super(KategorienDialog, self).__init__(parent)
@@ -516,7 +519,7 @@ class KategorienDialog(QDialog, kategorienDialog.Ui_kategorienDialog):
                     tmp.setBackground(QBrush(QColor(255, 0, 0, 127)))
                 self.listWidget.addItem(tmp)
 
-                #print("Kategorienuebersicht erfolgreich aktualisiert.")
+                # print("Kategorienuebersicht erfolgreich aktualisiert.")
         except:
             print("Fehler beim Aktualisieren Kategorienuebersicht.")
         c.close()
@@ -549,7 +552,7 @@ class KategorienDialog(QDialog, kategorienDialog.Ui_kategorienDialog):
             try:
                 c.execute('''   DELETE FROM kategorie WHERE id=?   ''', id_code)
                 conn.commit()
-                #print("Kategorie erfolgreich gelöscht.")
+                # print("Kategorie erfolgreich gelöscht.")
             except:
                 print("Fehler beim Löschen der Kategorie.")
             c.close()
@@ -564,14 +567,14 @@ class KategorienDialog(QDialog, kategorienDialog.Ui_kategorienDialog):
         try:
             c.execute('''   INSERT INTO kategorie VALUES(NULL, ?, ?)   ''', t)
             conn.commit()
-            #print("Kategorie erfolgreich erstellt.")
+            # print("Kategorie erfolgreich erstellt.")
         except:
             print("Fehler beim Erstellen der Kategorie.")
         c.close()
         self.kategorienuebersicht_aktualisieren()
 
 
-# noinspection PyUnresolvedReferences
+# noinspection PyUnresolvedReferences,PyBroadException
 class AuswertenDialog(QDialog, auswertungDialogGui.Ui_Dialog):
 
     def __init__(self, parent=None):
@@ -673,8 +676,8 @@ class AuswertenDialog(QDialog, auswertungDialogGui.Ui_Dialog):
     # Inhaltsfunktionen
     def einnahmen_ausgaben_vergleich_matplotlib_berechnen(self):
         # Balkendiagramm
-        meineFigur = plt.figure(1, facecolor='none')  # , figsize=(6,6)
-        meineFigur.clf()
+        meine_figur = plt.figure(1, facecolor='none')  # , figsize=(6,6)
+        meine_figur.clf()
         n_groups = 12
         liste_einnahmen = []
         liste_ausgaben = []
@@ -719,13 +722,13 @@ class AuswertenDialog(QDialog, auswertungDialogGui.Ui_Dialog):
                 label='Einnahmen')
         plt.bar(index + bar_width, liste_ausgaben, bar_width, alpha=opacity, color='r', error_kw=error_config,
                 label='Ausgaben')
-        #plt.xlabel('Monate')
+        # plt.xlabel('Monate')
         plt.ylabel('Euro')
-        #plt.title('Einnahmen u. Ausgaben per Monat')
+        # plt.title('Einnahmen u. Ausgaben per Monat')
         plt.xticks(index + bar_width, ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                                        'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'))
         plt.legend()
-        canvasBalken = FigureCanvas(meineFigur)
+        canvas_balken = FigureCanvas(meine_figur)
 
         # Tabelle am unteren Rand fuellen:
         zaehler = 0
@@ -738,12 +741,12 @@ class AuswertenDialog(QDialog, auswertungDialogGui.Ui_Dialog):
             self.tableWidget.setItem(1, zaehler, new_item_ausgabe)
             self.tableWidget.setItem(2, zaehler, new_item_differenz)
             zaehler += 1
-        return canvasBalken
+        return canvas_balken
 
     def einnahmen_uebersicht_matplotlib_berechnen(self):
         # Piechart
-        meineFigur = plt.figure(1, figsize=(6, 6), facecolor='none')
-        meineFigur.clf()
+        meine_figur = plt.figure(1, figsize=(6, 6), facecolor='none')
+        meine_figur.clf()
         plt.axes([0.1, 0.1, 0.8, 0.8])
 
         conn = sqlite3.connect("datenbank.db")
@@ -768,12 +771,12 @@ class AuswertenDialog(QDialog, auswertungDialogGui.Ui_Dialog):
             print("Fehler beim Datenbankenzugriff 1.")
         c.close()
 
-        #labels = ['Nix', 'Garnix', 'Wenig', 'Bissle']
-        #fracs = [15, 30, 45, 10]
+        # labels = ['Nix', 'Garnix', 'Wenig', 'Bissle']
+        # fracs = [15, 30, 45, 10]
 
         plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
         plt.legend(legend_text, loc='best')
-        canvas_piechart = FigureCanvas(meineFigur)
+        canvas_piechart = FigureCanvas(meine_figur)
 
         # Tabelle unten
         conn = sqlite3.connect("datenbank.db")
@@ -805,6 +808,7 @@ class AuswertenDialog(QDialog, auswertungDialogGui.Ui_Dialog):
                 zaehler += 1
         except:
             print("Fehler beim Datenbankenzugriff 2.")
+            gesammt_liste = []
         c.close()
 
         self.tableWidget_2.setRowCount(len(gesammt_liste))
@@ -823,29 +827,29 @@ class AuswertenDialog(QDialog, auswertungDialogGui.Ui_Dialog):
         # Verlaufsgrafik
         x_beschriftung = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
         x_nummerierung = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        #ausgaben = [55, 20, 130, 140, 90, 90, 55, 70, 60, 80, 85, 110]
-        #einnahmen = [30, 55, 76, 56, 44, 90, 78, 90, 90, 110, 30, 55]
+        # ausgaben = [55, 20, 130, 140, 90, 90, 55, 70, 60, 80, 85, 110]
+        # einnahmen = [30, 55, 76, 56, 44, 90, 78, 90, 90, 110, 30, 55]
         legend_text = []  # ["diese chart ist", "leider unfug bisher"]
 
-        meineFigurZwei = plt.figure(facecolor='none')
-        meineFigurZwei.clf()
+        meine_figur_zwei = plt.figure(facecolor='none')
+        meine_figur_zwei.clf()
 
         for row in gesammt_liste:
-            meinGraph = meineFigurZwei.add_subplot(111)
-            meinGraph.plot(x_nummerierung, row[1:], '-o')
-            meinGraph.set_xticks(x_nummerierung)
-            meinGraph.set_xticklabels(x_beschriftung)
+            mein_graph = meine_figur_zwei.add_subplot(111)
+            mein_graph.plot(x_nummerierung, row[1:], '-o')
+            mein_graph.set_xticks(x_nummerierung)
+            mein_graph.set_xticklabels(x_beschriftung)
             legend_text.append(row[0])
 
         plt.legend(legend_text, loc='best')
-        canvas_verlaufsgrafik = FigureCanvas(meineFigurZwei)
+        canvas_verlaufsgrafik = FigureCanvas(meine_figur_zwei)
 
         return canvas_piechart, canvas_verlaufsgrafik
 
     def ausgaben_uebersicht_matplotlib_berechnen(self):
         # Piechart
-        meineFigur = plt.figure(1, figsize=(6, 6), facecolor='none')
-        meineFigur.clf()
+        meine_figur = plt.figure(1, figsize=(6, 6), facecolor='none')
+        meine_figur.clf()
         plt.axes([0.1, 0.1, 0.8, 0.8])
 
         conn = sqlite3.connect("datenbank.db")
@@ -870,12 +874,12 @@ class AuswertenDialog(QDialog, auswertungDialogGui.Ui_Dialog):
             print("Fehler beim Datenbankenzugriff 1.")
         c.close()
 
-        #labels = ['Nix', 'Garnix', 'Wenig', 'Bissle']
-        #fracs = [15, 30, 45, 10]
+        # labels = ['Nix', 'Garnix', 'Wenig', 'Bissle']
+        # fracs = [15, 30, 45, 10]
 
         plt.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
         plt.legend(legend_text, loc='best')
-        canvas_piechart = FigureCanvas(meineFigur)
+        canvas_piechart = FigureCanvas(meine_figur)
 
         # Tabelle unten
         conn = sqlite3.connect("datenbank.db")
@@ -907,6 +911,7 @@ class AuswertenDialog(QDialog, auswertungDialogGui.Ui_Dialog):
                 zaehler += 1
         except:
             print("Fehler beim Datenbankenzugriff 2.")
+            gesammt_liste = []
         c.close()
 
         self.tableWidget_3.setRowCount(len(gesammt_liste))
@@ -925,22 +930,22 @@ class AuswertenDialog(QDialog, auswertungDialogGui.Ui_Dialog):
         # Verlaufsgrafik
         x_beschriftung = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
         x_nummerierung = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        #ausgaben = [55, 20, 130, 140, 90, 90, 55, 70, 60, 80, 85, 110]
-        #einnahmen = [30, 55, 76, 56, 44, 90, 78, 90, 90, 110, 30, 55]
+        # ausgaben = [55, 20, 130, 140, 90, 90, 55, 70, 60, 80, 85, 110]
+        # einnahmen = [30, 55, 76, 56, 44, 90, 78, 90, 90, 110, 30, 55]
         legend_text = []  # ["diese chart ist", "leider unfug bisher"]
 
-        meineFigurZwei = plt.figure(facecolor='none')
-        meineFigurZwei.clf()
+        meine_figur_zwei = plt.figure(facecolor='none')
+        meine_figur_zwei.clf()
 
         for row in gesammt_liste:
-            meinGraph = meineFigurZwei.add_subplot(111)
-            meinGraph.plot(x_nummerierung, row[1:], '-o')
-            meinGraph.set_xticks(x_nummerierung)
-            meinGraph.set_xticklabels(x_beschriftung)
+            mein_graph = meine_figur_zwei.add_subplot(111)
+            mein_graph.plot(x_nummerierung, row[1:], '-o')
+            mein_graph.set_xticks(x_nummerierung)
+            mein_graph.set_xticklabels(x_beschriftung)
             legend_text.append(row[0])
 
         plt.legend(legend_text, loc='best')
-        canvas_verlaufsgrafik = FigureCanvas(meineFigurZwei)
+        canvas_verlaufsgrafik = FigureCanvas(meine_figur_zwei)
 
         return canvas_piechart, canvas_verlaufsgrafik
 
